@@ -1,0 +1,78 @@
+{% extends "userBase.html" %} {% block content %}
+
+<main id="main">
+	<!-- ======= Breadcrumbs ======= -->
+	<div
+		class="breadcrumbs d-flex align-items-center"
+		style="background-image: url('assets/img/breadcrumbs-bg.jpg')"
+	>
+		<div
+			class="container position-relative d-flex flex-column align-items-center"
+			data-aos="fade"
+		>
+			<h2>View</h2>
+			<h2>Crime Details</h2>
+		</div>
+	</div>
+	<!-- End Breadcrumbs -->
+
+	<!-- ======= Contact Section ======= -->
+	<section id="contact" class="contact">
+		<div class="container" data-aos="fade-up" data-aos-delay="100">
+			<form method="post">
+				{% csrf_token %}
+				<div class="d-flex">
+					<input type="text" name="search" class="form-control" placeholder="Search here" id=""><input type="submit" class="btn btn-primary" value="Search">
+				</div>
+			</form>
+			<div class="row gy-4 mt-3">
+				<div class="col-lg-12" style="margin: auto">
+					<table
+						class="table table-secondary table-striped table-hover text-center"
+					>
+						<tr>
+							<th>Sl/No..</th>
+							<th>Crime No.</th>
+							<th>Date</th>
+							<th>Reported Date</th>
+							<th>Updated Date</th>
+							<th>Crime</th>
+							<th>State</th>
+							<th>District</th>
+							<th>Location</th>
+							<th>Description</th>
+							<th>Report</th>
+							<th></th>
+						</tr>
+						{% if data %}
+						{% for d in data %}
+						<tr>
+							<td>{{forloop.counter}}</td>
+							<td>{{d.crimeno}}</td>
+							<td>{{d.created_at}}</td>
+							<td>{{d.date_reported}}</td>
+							<td>{{d.updated_at}}</td>
+							<td>{{d.crimetype}}</td>
+							<td>{{d.state}}</td>
+							<td>{{d.district}}</td>
+							<td>{{d.location}}</td>
+							<td>{{d.description}}</td>
+							<td><a href="/static/media/{{d.report}}" download="" class="btn btn-info">Report</a></td>
+							<td><a href="/userUpdateCrimeFile?id={{d.id}}" class="btn btn-warning">Update</a></td>
+						</tr>
+						{% endfor %}
+						{% else %}
+						<tr>
+							<td colspan="12"> No data found</td>
+						</tr>
+						{% endif %}
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Contact Section -->
+</main>
+<!-- End #main -->
+
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends "adminBase.html" %} {% block content %}
+<style>
+	ul{
+		list-style: none;
+	}
+</style>
+<main id="main">
+	<!-- ======= Breadcrumbs ======= -->
+	<div
+		class="breadcrumbs d-flex align-items-center"
+		style="background-image: url('/static/img/breadcrumbs-bg.jpg')"
+	>
+		<div
+			class="container position-relative d-flex flex-column align-items-center"
+			data-aos="fade"
+		>
+			<h2>Crimes in India</h2>
+		</div>
+	</div>
+	<!-- End Breadcrumbs -->
+
+	<!-- ======= Contact Section ======= -->
+	<section id="contact" class="contact">
+		<div class="w3-services-grids py-lg-4 text-center" style="padding: 20px;">
+			<form action="" method="post">
+				{% csrf_token %}
+				<select name="crime" id="" class="btn btn-secondary" required>
+					<option value="" selected disabled>Select Crime</option>
+					<option value="MURDER">MURDER</option>
+					<option value="ATTEMPT TO MURDER">ATTEMPT TO MURDER</option>
+					<option value="CULPABLE HOMICIDE NOT AMOUNTING TO MURDER">CULPABLE HOMICIDE NOT AMOUNTING TO MURDER</option>
+					<option value="RAPE">RAPE</option>
+					<option value="CUSTODIAL RAPE">CUSTODIAL RAPE</option>
+					<option value="OTHER RAPE">OTHER RAPE</option>
+					<option value="KIDNAPPING & ABDUCTION">KIDNAPPING & ABDUCTION</option>
+					<option value="KIDNAPPING AND ABDUCTION OF WOMEN AND GIRLS">KIDNAPPING AND ABDUCTION OF WOMEN AND GIRLS</option>
+					<option value="KIDNAPPING AND ABDUCTION OF OTHERS">KIDNAPPING AND ABDUCTION OF OTHERS</option>
+					<option value="DACOITY">DACOITY</option>
+					<option value="PREPARATION AND ASSEMBLY FOR DACOITY">PREPARATION AND ASSEMBLY FOR DACOITY</option>
+					<option value="ROBBERY">ROBBERY</option>
+					<option value="BURGLARY">BURGLARY</option>
+					<option value="THEFT">THEFT</option>
+					<option value="AUTO THEFT">AUTO THEFT</option>
+					<option value="OTHER THEFT">OTHER THEFT</option>
+					<option value="RIOTS">RIOTS</option>
+					<option value="CRIMINAL BREACH OF TRUST">CRIMINAL BREACH OF TRUST</option>
+					<option value="CHEATING">CHEATING</option>
+					<option value="COUNTERFIETING">COUNTERFIETING</option>
+					<option value="ARSON">ARSON</option>
+					<option value="HURT/GREVIOUS HURT">HURT/GREVIOUS HURT</option>
+					<option value="DOWRY DEATHS">DOWRY DEATHS</option>
+					<option value="ASSAULT ON WOMEN WITH INTENT TO OUTRAGE HER MODESTY">ASSAULT ON WOMEN WITH INTENT TO OUTRAGE HER MODESTY</option>
+					<option value="INSULT TO MODESTY OF WOMEN">INSULT TO MODESTY OF WOMEN</option>
+					<option value="CRUELTY BY HUSBAND OR HIS RELATIVES">CRUELTY BY HUSBAND OR HIS RELATIVES</option>
+					<option value="IMPORTATION OF GIRLS FROM FOREIGN COUNTRIES">IMPORTATION OF GIRLS FROM FOREIGN COUNTRIES</option>
+					<option value="CAUSING DEATH BY NEGLIGENCE">CAUSING DEATH BY NEGLIGENCE</option>
+					<option value="OTHER IPC CRIMES">OTHER IPC CRIMES</option>
+					<option value="TOTAL IPC CRIME">TOTAL IPC CRIME</option>
+				</select>
+				<input type="submit" value="Fetch Data" class="btn btn-primary">
+			</form>
+			<div class="fea-gd-vv row">
+				<div class="col-lg-4 col-md-7" style="margin: 30px auto">
+					<div class="feature-gd icon-yellow">
+						<div class="icon">
+							<h2>{{crime}}</h2>
+							<a href="/static/media/{{f2.img}}" target="_blank"
+								>
+								<img
+									src="/static/media/{{f2.img}}"
+									style="
+										width: 600px;
+										padding-right: 26px;
+										padding-bottom: 5px;
+									"
+									title="{{f2.details}}"
+							/></a>
+							<a href="/static/media/{{f1.img}}" target="_blank" 
+								><img
+									src="/static/media/{{f1.img}}"
+									style="
+										width: 600px;
+										padding-right: 26px;
+										padding-bottom: 5px;
+									"
+									title="{{f1.details}}"
+							/></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Contact Section -->
+</main>
+<!-- End #main -->
+
+{% endblock %}

@@ -1,0 +1,4 @@
+import plotly
+import kaleido
+
+pip install kaleido==0.1.0post1
